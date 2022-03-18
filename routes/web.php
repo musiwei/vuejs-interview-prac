@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Product related
+Route::get('/', [ProductController::class, 'index'])->name('product.index');
+Route::post('/', [ProductController::class, 'store'])->name('product.store');
+Route::put('/{id}', [ProductController::class, 'update'])->name('product.update');
+Route::delete('/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
